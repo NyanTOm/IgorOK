@@ -107,11 +107,33 @@ a:hover
             font-size: 16px;
             resize: vertical;
           }
+          .form_input._error {
+            box-shadow: 0 0 15px red;
+          }
           .gnida{
 
             border: 1px solid black;
             padding: 10px;
           }
+          .form_body{
+            position: relative;
+          }
+          .form_body::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(51, 51, 51, 0.9) url("../Igor/Loading.gif") center / 350px no-repeat;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease 0s;
+          }
+            .form_body._sending::after{
+              opacity: 1;
+              visibility: visible;
+            }
 </style>
 </head>
 <body>
@@ -237,22 +259,28 @@ a:hover
 </div>
 </div>
  </div>
-<div class="pokupka"><b><h3>Для покупки Yakuza Kiwami, заполните бланк и нажмите "Отправить" и ожидайте ответа<h3></b></div>
-<form action="http://mihailmaximov.ru/projects/mail/post.php" method="post" name="form">
+ <div class="form">
+ <div class="form_title"><b><h3>Для покупки Yakuza 0, заполните бланк и нажмите "Отправить" и ожидайте ответа<h3></b></div>
+ <form action="#" method="post" class="form_body" name="form" id="form">
  <!-- Поле ввода имени -->
- <input name="name" type="text" placeholder="Ваше имя" />
+ <div class="form_item">
+ <input id="formName" name="name" type="text" placeholder="Ваше имя" class="form_input _req"/>
   <br><!-- Поле ввода почты -->
-   <input name="email" type="text" placeholder="Ваша почта" />
+ </div>
+ <div class="form_item">
+   <input id="formEmail" name="email" type="text" placeholder="Ваша почта" class="form_input _req _email"/>
    <br><!-- Поле ввода для темы сообщения -->
-   <input size="30" name="header" type="text" placeholder="Тема" />
+ </div>
+   <input size="30" name="header" type="text" placeholder="Тема"/>
    <br> <!-- Текстовое поле для самого сообщения -->
-   <textarea cols="32" name="message" rows="5" placeholder="Текст сообщения"></textarea> <br>
+   <textarea cols="32" name="message" rows="5" placeholder="Текст сообщения" ></textarea> <br>
    <!-- Кнопка с надписью «Отправить», которая запускает обработчик формы -->
-   <input type="submit" value="Отправить" /> </form>
+   <button type="submit" class="form_button" >Отправить </button>
+ </form>
 <br><br><br><br>
 
 
-
+</div>
  </div>
  <div style="padding-left: 100px;padding-right: 100px;">
  <h3>Также рекомендуем похожие игры:</h3>
@@ -278,5 +306,6 @@ a:hover
 
 </div>
 </div>
+<script src="../IgorOK/script.js"> </script>
 </body>
 </html>
