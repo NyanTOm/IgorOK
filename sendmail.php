@@ -11,14 +11,14 @@
   $mail->IsHTML(true);
 
   //От кого письмо
-  $mail->setForm('info@fls.guru', 'Фрилансер по жизни');
+  $mail->setForm('info@fls.guru', 'Гном');
   //Кому отправлять
   $mail->addAddress('mirors227@gmail.com');
   //Тема письма
-  $mail->Subject = 'Привет! "Это фрилансер по жизни"';
+  $mail->Subject = 'Здоров! "Це я, Гном"';
 
   //Тело письма
-  $body = '<h1>Встречайте супер письмо</h1>';
+  $body = '<h1>СУПЕР ГНОМ</h1>';
 
   if (trim(!empty(&_POST['name']))) {
     $body.='<p><string>Имя:</strong> '.&_POST['name'].'</p>';
@@ -35,9 +35,9 @@
   //Отправляем
 
   if (!$mail->send()) {
-    $message = 'Ошибка';
+    $message = 'Помилка';
   }else {
-      $message = 'Данные отправлены!';
+      $message = 'Все готово!';
   }
   $response = ['message' => $message];
   header('Content-type: application/json');
